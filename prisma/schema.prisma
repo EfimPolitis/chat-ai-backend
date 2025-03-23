@@ -9,19 +9,33 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model Message {
-  id        String   @id @default(cuid()) @map("_id")
-  chatId    String
-  role      ERole
-  content   String
-  createdAt DateTime @default(now())
+enum ERole {
+  user
+  assistant
+  system
 }
 
-enum ERole {
-  USER
-  ASSISTANT
+model Chat {
+  id        String    @id @default(cuid()) @map("_id")
+  userId    String
+  title     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  messages  Message[]
+}
+
+model Message {
+  id String @id @default(cuid()) @map("_id")
+
+  chatId String
+  chat   Chat   @relation(fields: [chatId], references: [id], onDelete: Cascade)
+
+  isAnimated Boolean  @default(false) @map("is_animated")
+  content    String
+  role       ERole
+  createdAt  DateTime @default(now())
 }
