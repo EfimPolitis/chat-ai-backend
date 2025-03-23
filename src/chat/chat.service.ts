@@ -73,7 +73,7 @@ export class ChatService {
     if (userId !== oldUser) throw new ForbiddenException('Нет доступа');
 
     await this.prisma.message.create({
-      data: { chatId, role: ERole.user, content },
+      data: { chatId, role: 'user', content },
     });
 
     await this.prisma.chat.update({
@@ -98,7 +98,7 @@ export class ChatService {
     const aiResponse = await this.openAiService.getChatCompletion(messages);
 
     await this.prisma.message.create({
-      data: { chatId, role: ERole.assistant, content: aiResponse },
+      data: { chatId, role: 'assistant', content: aiResponse },
     });
 
     if (messages.length === 1) {
@@ -176,16 +176,16 @@ export class ChatService {
       take: 2,
     });
 
-    const userMessage = messages.find((message) => message.role === ERole.user);
+    const userMessage = messages.find((message) => message.role === 'user');
     const assistantMessage = messages.find(
-      (message) => message.role === ERole.assistant,
+      (message) => message.role === 'assistant',
     );
 
     if (!userMessage || !assistantMessage) throw new BadRequestException();
 
     const titlePrompt = [
       {
-        role: ERole.system,
+        role: ERole.assistant,
         content:
           'Ты придумываешь короткие и понятные названия для чатов на основе беседы.',
       },

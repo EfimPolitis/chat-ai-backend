@@ -13,12 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum ERole {
-  user
-  assistant
-  system
-}
-
 model Chat {
   id        String    @id @default(cuid()) @map("_id")
   userId    String
@@ -38,4 +32,10 @@ model Message {
   content    String
   role       ERole
   createdAt  DateTime @default(now())
+}
+
+enum ERole {
+  user
+  assistant
+  system
 }

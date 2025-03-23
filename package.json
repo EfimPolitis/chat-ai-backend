@@ -1,8 +1,8 @@
 {
   "name": "chat-ai-backend",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "",
-  "author": "",
+  "author": "Efim Politis",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
