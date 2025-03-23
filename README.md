@@ -5,7 +5,6 @@
 ## Технологии для реализации
 
 <p>Библитеки и фрэймворки:</p>
-<br/>
 <ul>
   <li><strong>Nest js</strong></li>
   <li><strong>TypeScript</strong></li>
@@ -17,7 +16,6 @@
   <li>Для обработки запросов пользователя <strong>OpenAI API</strong></li>
   <li>Для конвертации речи в текст <strong>Whisper API</strong></li>
 </ul>
-<br/>
 
 ## Требования для сборки
 
@@ -50,7 +48,6 @@ $ npm run start
 ## База Данных
 
 <p>Используемая база данных: <strong>MongoDB</strong></p>
-<br/>
 <ul>
   <li>Запустите свой сервер MongoDB <strong>(это можно сделать на официальном сайте mongodb.com)</strong></li>
   <li>Создайте в корне проекта файл .env</li>
