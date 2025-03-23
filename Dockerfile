@@ -29,6 +29,6 @@ COPY --from=build /app/node_modules/@your-other-needed-pkgs ./node_modules/@your
 
 # Prisma Client работает, даже без prisma-cli, т.к. уже сгенерен
 
-EXPOSE 3000
+EXPOSE 5000
 CMD ["yarn": "start"]
 
